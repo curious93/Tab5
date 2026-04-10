@@ -30,3 +30,8 @@ Knowledge regarding specific domains has been extracted to dedicated documents.
 2. Read the relevant `/docs/...` file if applicable.
 3. Ensure working state is committed before coding.
 4. Execute changes, compile/test (`pio run`), and commit.
+
+## 5. Communication & Action Protocol (Read-Only on Questions)
+* **Question == No Action:** If the user asks a question, asks for an explanation of a bug, or inquires about an architecture detail, you MUST act in **Read-Only Mode**. 
+* You are strictly FORBIDDEN to modify any files, run build commands, or commit code when answering a question. 
+* Only modify code if the user explicitly instructs you to execute a change (e.g., "Fix it", "Implement this", "Proceed").
