@@ -24,3 +24,6 @@ GUI crashes on the ESP32 are primarily caused by memory leaks and cross-thread c
 * The Launcher consists of a central screen and various sub-apps.
 * **RULE:** When an App is launched, the Launcher screen and all its LVGL objects MUST be deleted from memory (`lv_obj_del`) to free up RAM. 
 * When the user returns to the Launcher, the App's objects are deleted and the Launcher is re-instantiated. Never keep unused screens hidden in the background for complex Apps.
+
+### D) C++ UI Best Practices
+* **No Raw LVGL Pointers floating around:** Always manage LVGL objects (`lv_obj_t*`) within the lifecycle of the App class. If C++ classes wrap LVGL elements, their destructors (`~ClassName()`) must properly call `lv_obj_del()` if the parent screen isn't already handling it.
