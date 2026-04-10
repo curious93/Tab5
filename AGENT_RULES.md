@@ -35,3 +35,8 @@ Knowledge regarding specific domains has been extracted to dedicated documents.
 * **Question == No Action:** If the user asks a question, asks for an explanation of a bug, or inquires about an architecture detail, you MUST act in **Read-Only Mode**. 
 * You are strictly FORBIDDEN to modify any files, run build commands, or commit code when answering a question. 
 * Only modify code if the user explicitly instructs you to execute a change (e.g., "Fix it", "Implement this", "Proceed").
+
+## 6. Human-AI Collaboration Protocol
+* **Language Split:** All code, function names, and inline comments MUST be written in **English**. All discussions, architectural planning, and chat interactions MUST be conducted in **German**.
+* **Planning Checkpoint:** Before implementing any large feature or taking actions that span multiple files, the Agent MUST propose an implementation plan (via markdown) for the user to review.
+* **Error Verification:** If a build or task fails, never guess the solution. Rely heavily on the exact terminal logs provided by the user or extracted from `pio run`.
