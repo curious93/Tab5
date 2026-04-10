@@ -40,3 +40,11 @@ Knowledge regarding specific domains has been extracted to dedicated documents.
 * **Language Split:** All code, function names, and inline comments MUST be written in **English**. All discussions, architectural planning, and chat interactions MUST be conducted in **German**.
 * **Planning Checkpoint:** Before implementing any large feature or taking actions that span multiple files, the Agent MUST propose an implementation plan (via markdown) for the user to review.
 * **Error Verification:** If a build or task fails, never guess the solution. Rely heavily on the exact terminal logs provided by the user or extracted from `pio run`.
+
+## 7. Hardware Implementation Rule (Pre-Flight Checklist)
+* **Zero-Trust Build:** Before presenting ANY implementation plan that involves UI, Sensors, or System Logic on an embedded device, the Agent MUST systematically verify and document the following 4 pillars hardware-abstraction:
+  1. **Init:** Is the hardware core explicitly initialized (e.g., `M5.begin()`)?
+  2. **Output:** Is the display buffer mapped correctly? Is the PSRAM compiler flag (`-D BOARD_HAS_PSRAM` or equivalent) explicitly defined in `platformio.ini` to prevent out-of-memory crashes?
+  3. **Input:** Is a physical input driver (e.g., Touch/Buttons via `lv_indev_drv_t`) hooked up to the UI? The display cannot be a dead canvas.
+  4. **Lifecycle:** Are the framework timers (`lv_tick_inc()`, `lv_timer_handler()`) properly synchronized with the hardware tick/main loop (`M5.update()`) without congesting the FreeRTOS heap?
+* **Exception:** Do not assume these elements "can be added later". A plan without them is structurally defective and forbidden.
