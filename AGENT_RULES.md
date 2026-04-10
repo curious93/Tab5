@@ -9,7 +9,13 @@ Follow these primary rules for every interaction and code change:
 * **Always use Git:** You must commit your changes frequently. Use the configured author email `vonbrueck@gmail.com`.
 * **Micro-Commits / Go-Lock:** Before making any large code changes, refactoring, or attempting to fix a build error, ensure the current working state is committed. If your new changes break the build, you MUST revert to the last working commit and reconsider the approach.
 
-## 2. Architecture & Documentation
+## 2. Code Quality & Best Practices
+* **Modern C++ / Clean Code:** Always write idiomatic, modern C++. Adhere strictly to embedded best practices to prevent memory leaks and undefined behavior:
+  * Use **RAII** and smart pointers (`std::unique_ptr`, `std::shared_ptr`) whenever possible instead of raw `new`/`delete`.
+  * Enforce **Const Correctness** (`const` values, `const` methods).
+  * Avoid global variables; use Dependency Injection or Singletons sparingly and intentionally.
+
+## 3. Architecture & Documentation
 Knowledge regarding specific domains has been extracted to dedicated documents. 
 **You MUST read the relevant documentation located in the `docs/` folder BEFORE modifying those domains.**
 
