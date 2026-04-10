@@ -1,0 +1,18 @@
+# PlatformIO
+.pio/
+.pioenvs/
+.piolibdeps/
+.vscode/
+.DS_Store
+
+# Compiled object files
+*.o
+*.obj
+*.out
+*.elf
+*.bin
+
+# Other IDEs
+.idea/
+cmake-build-*/
+build/
